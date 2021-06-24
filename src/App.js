@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components'
+import Authenticate from './Authenticate'
+import SendTransaction from './SendTransaction'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Nav from './Nav';
+import SetupAccount from './SetupAccount';
+
+
+const Wrapper = styled.div`
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Wrapper>
+          <Nav />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/SetupAccount" component={SetupAccount} />
+            <Route path="/Authenticate" component={Authenticate} />
+            <Route path="/SendTransaction" component={SendTransaction} />
+          </Switch>
+        </Wrapper>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+const Home = () => (
+  <div>
+    <h1>KITTY ITEM MARKET PLACE</h1>
+  </div>
+);
+
+export default App
